@@ -1,13 +1,16 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    float m_TranslationSpeed;
+    private float m_TranslationSpeed;
 
-    Rigidbody m_RigidBody;
+    private Rigidbody m_RigidBody;
+
+    [SerializeField]
+    public int HealthPoint = 3;
 
     void Awake()
     {
