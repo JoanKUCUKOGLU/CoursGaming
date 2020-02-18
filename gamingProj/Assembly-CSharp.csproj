@@ -57,7 +57,9 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\BasicMove.cs" />
      <Compile Include="Assets\Scripts\Gun.cs" />
+     <Compile Include="Assets\Scripts\Hand.cs" />
      <Compile Include="Assets\Scripts\Move.cs" />
+     <Compile Include="Assets\Scripts\Shotgun.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>D:/Devs/CoursGaming/gamingProj/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
