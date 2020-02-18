@@ -58,8 +58,7 @@ public class Shotgun : MonoBehaviour
         {
             for(int i = 0; i < 4; i++)
             {
-                firedBullet = Instantiate(bullet, hand.transform);
-                firedBullet.transform.position = firedBullet.transform.parent.position;
+                firedBullet = Instantiate(bullet, hand.transform.position, hand.transform.rotation);
                 firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
 
                 Destroy(firedBullet, 2); //Temporaire pour tests

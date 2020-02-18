@@ -58,11 +58,9 @@ public class Gun : MonoBehaviour
     {
         if (isLooted)
         {
-           firedBullet = Instantiate(bullet,hand.transform);
-           firedBullet.transform.position = firedBullet.transform.parent.position;
-           firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
-
-           Destroy(firedBullet, 2); //Temporaire pour tests
+            firedBullet = Instantiate(bullet, hand.transform.position,hand.transform.rotation);
+            firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
+            Destroy(firedBullet, 2); //Temporaire pour tests
         }
     }
 }
