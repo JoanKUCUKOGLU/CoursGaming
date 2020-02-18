@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerFollow : MonoBehaviour
 {
+    [SerializeField]
+    GameObject Player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,6 +16,6 @@ public class PlayerFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        gameObject.transform.position = Player.transform.position + new Vector3(0, 7, -5);
     }
 }

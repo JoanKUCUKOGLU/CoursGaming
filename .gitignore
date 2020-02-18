@@ -10,3 +10,5 @@ gamingProj/obj/
 gamingProj/Temp/
 
 .DS_Store
+
+*.csproj
