@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156587051804484835}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 5.49, y: 0.24, z: 0.02}
+  m_LocalPosition: {x: 5.49, y: 0, z: 0.02}
   m_LocalScale: {x: 12.031236, y: 1.04, z: 1.0400004}
   m_Children: []
   m_Father: {fileID: 156587052721657827}
@@ -119,7 +119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156587051922782354}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.54, y: -2.5557032, z: -0.37}
+  m_LocalPosition: {x: 4.54, y: 0, z: -0.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 156587052721657827}
@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156587052137462423}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5.5, y: 0.24, z: 0.01}
+  m_LocalPosition: {x: -5.5, y: 0, z: 0.01}
   m_LocalScale: {x: 12.037055, y: 1.04, z: 1.0400004}
   m_Children: []
   m_Father: {fileID: 156587052721657827}
@@ -305,7 +305,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156587052521241832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.24, z: 5.51}
+  m_LocalPosition: {x: 0, y: 0, z: 5.51}
   m_LocalScale: {x: 10.0292015, y: 1.04, z: 1.04}
   m_Children: []
   m_Father: {fileID: 156587052721657827}
@@ -393,8 +393,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156587052721657826}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.000011508, y: 0.0081873, z: 0.00066056}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.000011444092, y: 0.262, z: 0.0006605387}
   m_LocalScale: {x: 1.0023041, y: 0.5, z: 0.9512909}
   m_Children:
   - {fileID: 156587053616437732}
@@ -414,7 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156587053420397865}
   m_Layer: 0
-  m_Name: Salle1
+  m_Name: TemplateSalle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,8 +428,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156587053420397864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.360697, y: 2.5557032, z: 3.7483487}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -10.360697, y: 0, z: 3.7483487}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 156587051922782358}
   m_Father: {fileID: 0}
@@ -462,7 +462,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156587053616437735}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.24, z: -5.48}
+  m_LocalPosition: {x: 0, y: 0, z: -5.48}
   m_LocalScale: {x: 10.0292015, y: 1.04, z: 1.04}
   m_Children: []
   m_Father: {fileID: 156587052721657827}
