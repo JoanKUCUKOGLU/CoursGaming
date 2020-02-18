@@ -414,7 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 156587053420397865}
   m_Layer: 0
-  m_Name: TemplateSalle1
+  m_Name: SalleCarre1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
