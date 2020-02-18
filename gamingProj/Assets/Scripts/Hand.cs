@@ -6,6 +6,7 @@ public class Hand : MonoBehaviour
 {
     float cooldown = 1;    
     float internalClock = 0;
+    float shootingAngle;
     GameObject gun;
 
     // Start is called before the first frame update
@@ -17,7 +18,11 @@ public class Hand : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetButton("Fire1") && internalClock >= cooldown)
+        shootingAngle = Mathf.Atan2(Input.GetAxis("R3X"), Input.GetAxis("R3Y")) * Mathf.Rad2Deg;
+        transform.position = new Vector3(Input.GetAxis("R3X") + transform.parent.position.x, transform.position.y, Input.GetAxis("R3Y") + transform.parent.position.z);
+        transform.rotation = Quaternion.Euler(0, shootingAngle, 0);
+
+        if ((Input.GetAxis("R3X") != 0 || Input.GetAxis("R3Y") != 0) && internalClock >= cooldown)
         {
             gun.SendMessage("Shoot");   //Appelle la fonction "Shoot" de tout les composants du gun actuel
             internalClock = 0;
