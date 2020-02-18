@@ -19,7 +19,7 @@ public class Hand : MonoBehaviour
     {
         if(Input.GetButton("Fire1") && internalClock >= cooldown)
         {
-            gun.SendMessage("Shoot");
+            gun.SendMessage("Shoot");   //Appelle la fonction "Shoot" de tout les composants du gun actuel
             internalClock = 0;
         }
         internalClock += Time.deltaTime;
