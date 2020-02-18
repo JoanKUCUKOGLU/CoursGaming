@@ -19,7 +19,7 @@ public class Hand : MonoBehaviour
     void Update()
     {
         shootingAngle = Mathf.Atan2(Input.GetAxis("R3X"), Input.GetAxis("R3Y")) * Mathf.Rad2Deg;
-        transform.position = new Vector3(Input.GetAxis("R3X") + transform.parent.position.x, transform.position.y, Input.GetAxis("R3Y") + transform.parent.position.z);
+        transform.position = new Vector3(Input.GetAxis("R3X") * 0.7f + transform.parent.position.x, transform.position.y, Input.GetAxis("R3Y") * 0.7f + transform.parent.position.z);
         transform.rotation = Quaternion.Euler(0, shootingAngle, 0);
 
         if ((Input.GetAxis("R3X") != 0 || Input.GetAxis("R3Y") != 0) && internalClock >= cooldown)
