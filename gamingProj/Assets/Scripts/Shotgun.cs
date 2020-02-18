@@ -2,21 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Shotgun : MonoBehaviour
 {
+    [SerializeField]
+    float cooldown;
     [SerializeField]
     GameObject bullet;
     [SerializeField]
     float bulletSpeed;
-    [SerializeField]
-    float cooldown;
-    
+
     GameObject firedBullet;
     MeshRenderer meshRenderer;
     BoxCollider boxCollider;
     GameObject hand;
     bool isLooted = false;
-    
 
     void Awake()
     {
@@ -24,7 +23,6 @@ public class Gun : MonoBehaviour
         meshRenderer = GetComponent<MeshRenderer>();
         boxCollider = GetComponent<BoxCollider>();
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -49,7 +47,7 @@ public class Gun : MonoBehaviour
             transform.parent = hand.transform;
             meshRenderer.enabled = false;
             boxCollider.enabled = false;
-            hand.SendMessage("SetGun",this.gameObject); //this optionnel, mis pour la clareté de code
+            hand.SendMessage("SetGun", this.gameObject); //this optionnel, mis pour la clareté de code
             hand.SendMessage("SetCooldown", cooldown);
         }
     }
@@ -58,11 +56,14 @@ public class Gun : MonoBehaviour
     {
         if (isLooted)
         {
-           firedBullet = Instantiate(bullet,hand.transform);
-           firedBullet.transform.position = firedBullet.transform.parent.position;
-           firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
+            for(int i = 0; i < 4; i++)
+            {
+                firedBullet = Instantiate(bullet, hand.transform);
+                firedBullet.transform.position = firedBullet.transform.parent.position;
+                firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
 
-           Destroy(firedBullet, 2); //Temporaire pour tests
+                Destroy(firedBullet, 2); //Temporaire pour tests
+            }
         }
     }
 }

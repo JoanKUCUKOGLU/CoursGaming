@@ -10,6 +10,7 @@ public class BasicMove : MonoBehaviour
     float _rotSpeed;
 
     Rigidbody _rb;
+
     // Start is called before the first frame update
     void Start()
     {
