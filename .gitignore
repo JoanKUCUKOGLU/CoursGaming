@@ -1,0 +1,12 @@
+
+gamingProj/.vs/
+
+gamingProj/Library/
+
+gamingProj/Logs/
+
+gamingProj/obj/
+
+gamingProj/Temp/
+
+.DS_Store
