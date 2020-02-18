@@ -34,5 +34,6 @@ public class Player : MonoBehaviour
         //Vector3 vectForward = transform.forward * m_TranslationSpeed * Time.fixedDeltaTime * vInput;
         //Vector3 vectSide = transform.right * m_TranslationSpeed * Time.fixedDeltaTime * hInput;
         m_RigidBody.MovePosition(transform.position + dir * m_TranslationSpeed * Time.fixedDeltaTime);
+        m_RigidBody.velocity = Vector3.zero;
     }
 }
