@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     public int HealthPoint = 3;
     public GameObject ResetButton;
 
+    private Interface iu;
     void Awake()
     {
         m_RigidBody = GetComponent<Rigidbody>();
@@ -21,7 +22,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        iu = GameObject.FindObjectOfType<Interface>();
     }
 
     // Update is called once per frame
@@ -52,6 +53,7 @@ public class Player : MonoBehaviour
     void HealthDown()
     {
         HealthPoint -= HealthPoint > 0 ? 1 : 0;
+        iu.SendMessage("HeartLess");
         Debug.Log(HealthPoint);
     }
 }

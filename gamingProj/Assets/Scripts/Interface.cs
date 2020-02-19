@@ -54,4 +54,10 @@ public class Interface : MonoBehaviour
             NewObj.GetComponent<RectTransform>().SetParent(Parent.transform);
         }
     }
+
+    void HeartLess()
+    {
+        Transform lastChild = getListChild()[getListChild().Length - 1];
+        Destroy(GameObject.Find(lastChild.name));
+    }
 }
