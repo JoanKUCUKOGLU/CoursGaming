@@ -69,6 +69,23 @@ public class Interface : MonoBehaviour
         Transform lastChild = getLivesListChild()[getLivesListChild().Length - 1];
         Destroy(GameObject.Find(lastChild.name));
     }
+    void getLife()
+    {
+        GameObject NewObj = new GameObject();
+        Image NewImage = NewObj.AddComponent<Image>();
+        NewImage.color = Color.red;
+        NewImage.name = "Heart"+getLivesListChild().Length+1;
+        if (getLivesListChild().Length > 0)
+        {
+            Transform lastChild = getLivesListChild()[getLivesListChild().Length - 1];
+            NewObj.transform.position = new Vector3(lastChild.position.x + 150, ParentLives.transform.position.y, ParentLives.transform.position.z);
+        }
+        else
+        {
+            NewObj.transform.position = new Vector3(ParentLives.transform.position.x + 150, ParentLives.transform.position.y, ParentLives.transform.position.z);
+        }
+        NewObj.GetComponent<RectTransform>().SetParent(ParentLives.transform);
+    }
 
     void getWeapon(string weapon)
     {

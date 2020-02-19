@@ -56,4 +56,9 @@ public class Player : MonoBehaviour
         iu.SendMessage("HeartLess");
         Debug.Log(HealthPoint);
     }
+    void HealthUp()
+    {
+        HealthPoint++;
+        iu.SendMessage("getLife");
+    }
 }
