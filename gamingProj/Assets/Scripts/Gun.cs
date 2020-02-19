@@ -16,7 +16,8 @@ public class Gun : MonoBehaviour
     BoxCollider boxCollider;
     GameObject hand;
     bool isLooted = false;
-    
+
+    private Interface iu;
 
     void Awake()
     {
@@ -28,7 +29,7 @@ public class Gun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        iu = GameObject.FindObjectOfType<Interface>();
     }
 
     // Update is called once per frame
@@ -44,6 +45,7 @@ public class Gun : MonoBehaviour
         //Met l'arme en arme active et la fait disparaitre du sol
         if (collider.transform.name == "Player")
         {
+            iu.SendMessage("getWeapon","Gun");
             hand = GameObject.Find("Hand");
             isLooted = true;
             transform.parent = hand.transform;

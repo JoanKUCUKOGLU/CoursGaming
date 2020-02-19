@@ -500,6 +500,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interface
       objectReference: {fileID: 0}
+    - target: {fileID: 4066295336294237007, guid: d744eaea5a1c04f4f9e121efe56ebba6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -535
+      objectReference: {fileID: 0}
+    - target: {fileID: 4066295336294237007, guid: d744eaea5a1c04f4f9e121efe56ebba6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4878177474677082265, guid: d744eaea5a1c04f4f9e121efe56ebba6,
         type: 3}
       propertyPath: m_Name
@@ -1147,7 +1157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TranslationSpeed: 10
-  HealthPoint: 3
+  HealthPoint: 5
   ResetButton: {fileID: 4136173020622628328, guid: 45e2a9a9b8c12874bad16a3ba105c7e4,
     type: 3}
 --- !u!65 &1517383304
