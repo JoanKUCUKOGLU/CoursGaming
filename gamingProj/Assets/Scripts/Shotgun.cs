@@ -56,7 +56,7 @@ public class Shotgun : MonoBehaviour
     {
         if (isLooted)
         {
-            for(int i = 0; i < 4; i++)
+            for(int i = 0; i < 8; i++)
             {
                 firedBullet = Instantiate(bullet, hand.transform.position, hand.transform.rotation);
                 firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);

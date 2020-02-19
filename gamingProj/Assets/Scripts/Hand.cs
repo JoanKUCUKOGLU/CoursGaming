@@ -24,6 +24,7 @@ public class Hand : MonoBehaviour
 
         if ((Input.GetAxis("R3X") != 0 || Input.GetAxis("R3Y") != 0) && internalClock >= cooldown)
         {
+            //if gun != null
             gun.SendMessage("Shoot");   //Appelle la fonction "Shoot" de tout les composants du gun actuel
             internalClock = 0;
         }
