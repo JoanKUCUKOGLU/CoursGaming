@@ -86,7 +86,7 @@ public class Interface : MonoBehaviour
                 break;
         }
         NewImage.color = color;
-        NewImage.name = weapon;
+        NewImage.name = weapon+ getWeaponListChild().Length+1;
         if (getWeaponListChild().Length > 0)
         {
             Transform lastChild = getWeaponListChild()[getWeaponListChild().Length - 1];
@@ -99,5 +99,10 @@ public class Interface : MonoBehaviour
         NewObj.GetComponent<RectTransform>().SetParent(ParentWeapons.transform);
     }
 
-    
+    void WeaponLess()
+    {
+        Transform lastChild = getWeaponListChild()[getWeaponListChild().Length - 1];
+        Destroy(GameObject.Find(lastChild.name));
+    }
+
 }

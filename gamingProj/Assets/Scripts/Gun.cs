@@ -62,6 +62,7 @@ public class Gun : MonoBehaviour
         {
             firedBullet = Instantiate(bullet, hand.transform.position,hand.transform.rotation);
             firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
+            iu.SendMessage("WeaponLess");
             Destroy(firedBullet, 2); //Temporaire pour tests
         }
     }
