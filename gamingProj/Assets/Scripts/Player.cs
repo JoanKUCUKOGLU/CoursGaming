@@ -9,8 +9,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody m_RigidBody;
 
-    [SerializeField]
-    public int HealthPoint = 3;
+    private int HealthPoint = 3;
 
     void Awake()
     {
@@ -38,5 +37,11 @@ public class Player : MonoBehaviour
         //Vector3 vectSide = transform.right * m_TranslationSpeed * Time.fixedDeltaTime * hInput;
         m_RigidBody.MovePosition(transform.position + dir * m_TranslationSpeed * Time.fixedDeltaTime);
         m_RigidBody.velocity = Vector3.zero;
+    }
+
+    void HealthDown()
+    {
+        HealthPoint -= HealthPoint > 0 ? 1 : 0;
+        Debug.Log(HealthPoint);
     }
 }
