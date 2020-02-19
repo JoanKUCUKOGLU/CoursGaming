@@ -72,7 +72,6 @@ public class Interface : MonoBehaviour
 
     void getWeapon(string weapon)
     {
-        Debug.Log(getWeaponListChild().Length);
         GameObject NewObj = new GameObject();
         Image NewImage = NewObj.AddComponent<Image>();
        
@@ -90,15 +89,14 @@ public class Interface : MonoBehaviour
         NewImage.name = weapon;
         if (getWeaponListChild().Length > 0)
         {
-            Transform lastChild = getLivesListChild()[getLivesListChild().Length - 1];
-            NewObj.transform.position = new Vector3(lastChild.position.x + 10, ParentWeapons.transform.position.y, ParentWeapons.transform.position.z);
+            Transform lastChild = getWeaponListChild()[getWeaponListChild().Length - 1];
+            NewObj.transform.position = new Vector3(lastChild.position.x + 150, ParentWeapons.transform.position.y, ParentWeapons.transform.position.z);
         }
         else
         {
             NewObj.transform.position = new Vector3(ParentWeapons.transform.position.x + 200, ParentWeapons.transform.position.y, ParentWeapons.transform.position.z);
         }
         NewObj.GetComponent<RectTransform>().SetParent(ParentWeapons.transform);
-        Debug.Log(getWeaponListChild().Length);
     }
 
     
