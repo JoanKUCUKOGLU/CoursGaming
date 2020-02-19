@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody m_RigidBody;
 
     [SerializeField]
-    private int HealthPoint = 3;
+    public int HealthPoint = 3;
     public GameObject ResetButton;
 
     void Awake()
