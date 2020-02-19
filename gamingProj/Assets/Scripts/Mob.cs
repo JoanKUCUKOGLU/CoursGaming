@@ -29,9 +29,12 @@ public class Mob : MonoBehaviour
 
         //Debug.Log(player.transform.position);
 
-        if(Time.frameCount % 20 == 0)
+        if (Time.frameCount % 20 == 0)
         {
-            agent.SetDestination(player.transform.position);
+            if (player != null)
+            {
+                agent.SetDestination(player.transform.position);
+            }
         }
     }
 
@@ -39,8 +42,11 @@ public class Mob : MonoBehaviour
     {
         if (collision.gameObject.name.Equals("Player"))
         {
-            player.SendMessage("HealthDown");
-            GetComponent<Rigidbody>().AddForce(-transform.forward * 1.5F);
+            if (player != null)
+            {
+                player.SendMessage("HealthDown");
+                //GetComponent<Rigidbody>().AddForce(-transform.forward * 1.5F);
+            }
         }
     }
 }

@@ -10,12 +10,15 @@ public class PlayerFollow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.position = Player.transform.position + new Vector3(0, 7, -5);
+        if (Player != null)
+        {
+            gameObject.transform.position = Player.transform.position + new Vector3(0, 7, -5);
+        }
     }
 }
