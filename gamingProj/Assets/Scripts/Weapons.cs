@@ -8,34 +8,44 @@ abstract public class Weapons : MonoBehaviour
     
     [SerializeField]
     protected float cooldown;
+    [SerializeField]
+    protected int maxRound;
 
-    protected MeshRenderer meshRenderer;
+    protected int round;
+    protected SpriteRenderer weaponVisual;
     protected Collider collider;
     protected GameObject hand;
     protected bool isLooted = false;
+    private Interface iu;
 
     void Awake()
     {
         //Récupération des éléments visuels et physique du gun pour désactiver au loot
-        meshRenderer = GetComponent<MeshRenderer>();
+        weaponVisual = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider>();
+        iu = GameObject.FindObjectOfType<Interface>();
     }
 
     // Appel quand entrée en collision
     void OnCollisionEnter(Collision collision)
     {
+
         Debug.Log(collider.gameObject.name);
         //Met l'arme en arme active et la fait disparaitre du sol
         if (collision.transform.name == "Player")
         {
+            round = maxRound;
+            CalculateRounds();
             hand = GameObject.Find("Hand");
             isLooted = true;
             transform.parent = hand.transform;
             transform.rotation = hand.transform.rotation;
-            meshRenderer.enabled = false;
+            weaponVisual.enabled = false;
             collider.enabled = false;
             hand.SendMessage("SetGun", this.gameObject); //this optionnel, mis pour la clareté de code
             hand.SendMessage("SetCooldown", cooldown);
+            iu.SendMessage("GetWeapons");
+            
         }
     }
 
@@ -53,4 +63,25 @@ abstract public class Weapons : MonoBehaviour
     }
 
     abstract protected void Shoot(Vector3 shootPos);
+
+    protected void LooseMunitions()
+    {
+        round--;
+        CalculateRounds();
+    }
+    protected void CalculateRounds()
+    {
+        Rounds rounds = new Rounds()
+        {
+            ActualRound = round,
+            MaxRound = maxRound
+        };
+        iu.SendMessage("UpdadateRounds",rounds);
+    }
+}
+
+public class Rounds
+{
+    public int ActualRound { get; set; }
+    public int MaxRound { get; set; }
 }

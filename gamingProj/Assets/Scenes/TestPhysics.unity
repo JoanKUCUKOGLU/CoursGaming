@@ -500,6 +500,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Interface
       objectReference: {fileID: 0}
+    - target: {fileID: 3756110667188829133, guid: d744eaea5a1c04f4f9e121efe56ebba6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3756110667188829133, guid: d744eaea5a1c04f4f9e121efe56ebba6,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4066295336294237007, guid: d744eaea5a1c04f4f9e121efe56ebba6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
