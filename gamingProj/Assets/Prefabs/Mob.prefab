@@ -90,9 +90,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2557238287149324799}
-  - component: {fileID: 2557238287149324798}
   - component: {fileID: 5316618849155669183}
   - component: {fileID: 3288833934720409129}
+  - component: {fileID: 4523178264450085065}
   m_Layer: 0
   m_Name: Mob
   m_TagString: Mob
@@ -115,19 +115,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &2557238287149324798
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2557238287149324784}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 0.44, z: 1.3043461}
-  m_Center: {x: 0, y: 0.20973885, z: -0.15217304}
 --- !u!195 &5316618849155669183
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -165,3 +152,17 @@ MonoBehaviour:
   mobSpeed: 0
   cam: {fileID: 0}
   agent: {fileID: 0}
+--- !u!136 &4523178264450085065
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557238287149324784}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.41
+  m_Height: 1.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.3}
