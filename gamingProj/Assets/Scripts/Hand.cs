@@ -10,11 +10,15 @@ public class Hand : MonoBehaviour
     GameObject gun;
     bool isFixed = false;
     Vector3 shootPos;
+    Vector3 joystickAngle;
+    GameObject iu;
+    bool isWeaponChanged = false;
 
     // Start is called before the first frame update
     void Start()
     {
         gun = GameObject.Find("Knife");
+        iu = GameObject.Find("Interface");
     }
 
     // Update is called once per frame
@@ -23,7 +27,8 @@ public class Hand : MonoBehaviour
         if (!isFixed)
         {
             shootingAngle = Mathf.Atan2(Input.GetAxis("R3X"), Input.GetAxis("R3Y")) * Mathf.Rad2Deg;
-            shootPos = new Vector3(Input.GetAxis("R3X") * 0.8f + transform.parent.position.x, transform.position.y, Input.GetAxis("R3Y") * 0.8f + transform.parent.position.z);
+            joystickAngle = new Vector3(Input.GetAxis("R3X"), 0, Input.GetAxis("R3Y")).normalized;
+            shootPos = joystickAngle + transform.parent.position;
             transform.rotation = Quaternion.Euler(0, shootingAngle, 0);
 
             if ((Input.GetAxis("R3X") != 0 || Input.GetAxis("R3Y") != 0) && (internalClock >= cooldown || cooldown == 0))
@@ -62,5 +67,22 @@ public class Hand : MonoBehaviour
     void SetIsFixed(bool value)
     {
         isFixed = value;
+    }
+
+    void ChangeWeapon(string weaponName)
+    {
+        gun = GameObject.Find(weaponName);
+        iu.SendMessage("GetWeapons",FindIndexWeapon(weaponName));
+    }
+    int FindIndexWeapon(string weaponName)
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if(transform.GetChild(i).name == weaponName)
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 }

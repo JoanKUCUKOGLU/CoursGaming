@@ -16,16 +16,19 @@ abstract public class Weapons : MonoBehaviour
     protected Collider collider;
     protected GameObject hand;
     protected bool isLooted = false;
-    private Interface iu;
+    private GameObject iu;
 
     void Awake()
     {
         //Récupération des éléments visuels et physique du gun pour désactiver au loot
         weaponVisual = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider>();
-        iu = GameObject.FindObjectOfType<Interface>();
     }
 
+    private void Start() 
+    {
+        iu = GameObject.Find("Interface");
+    }
     // Appel quand entrée en collision
     void OnCollisionEnter(Collision collision)
     {
@@ -44,7 +47,7 @@ abstract public class Weapons : MonoBehaviour
             collider.enabled = false;
             hand.SendMessage("SetGun", this.gameObject); //this optionnel, mis pour la clareté de code
             hand.SendMessage("SetCooldown", cooldown);
-            iu.SendMessage("GetWeapons");
+            iu.SendMessage("GetWeapons",hand.transform.childCount - 1);
             
         }
     }
@@ -58,7 +61,7 @@ abstract public class Weapons : MonoBehaviour
             dir.Normalize();
             newBulletGO.transform.position = sprayCenter + dir * sprayRadius;
             newBulletGO.GetComponent<Rigidbody>().velocity = dir * bulletSpeed;
-            Destroy(newBulletGO, bulletLifeTime);
+            //Destroy(newBulletGO, bulletLifeTime);
         }
     }
 
@@ -68,6 +71,12 @@ abstract public class Weapons : MonoBehaviour
     {
         round--;
         CalculateRounds();
+        if(round <= 0)
+        {
+            Destroy(this.gameObject);
+            hand.SendMessage("ChangeWeapon","Knife");
+            //iu.SendMessage("GetWeapons");
+        }
     }
     protected void CalculateRounds()
     {

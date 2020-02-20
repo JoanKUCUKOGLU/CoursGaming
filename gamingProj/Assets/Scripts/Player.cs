@@ -36,12 +36,9 @@ public class Player : MonoBehaviour
         float hInput = Input.GetAxis("Horizontal");
         Vector3 dir = Vector3.ClampMagnitude(new Vector3(hInput, 0, vInput), 1);
 
-        //Vector3 vectForward = transform.forward * m_TranslationSpeed * Time.fixedDeltaTime * vInput;
-        //Vector3 vectSide = transform.right * m_TranslationSpeed * Time.fixedDeltaTime * hInput;
         if (healthPoint > 0)
         {
             rigidbody.MovePosition(transform.position + dir * translationSpeed * Time.fixedDeltaTime);
-            //rigidBody.velocity = Vector3.zero;
         }
 
     }

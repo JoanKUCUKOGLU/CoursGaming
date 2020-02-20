@@ -21,7 +21,8 @@ public class Interface : MonoBehaviour
     public GameObject weaponEmplacement3;
     public GameObject weaponEmplacement4;
 
-    private GameObject[] weaponEnplacements;
+    private GameObject[] weaponEmplacements;
+    int overlayedWeaponIndex = 0;
     private Font Arialfont;
     // Start is called before the first frame update
     void Start()
@@ -35,8 +36,9 @@ public class Interface : MonoBehaviour
         weaponEmplacement3 = GameObject.Find("WeaponEmplacement3");
         weaponEmplacement4 = GameObject.Find("WeaponEmplacement4");
 
-        weaponEnplacements = new GameObject[4]{ weaponEmplacement1, weaponEmplacement2, weaponEmplacement3, weaponEmplacement4};
+        weaponEmplacements = new GameObject[4]{ weaponEmplacement1, weaponEmplacement2, weaponEmplacement3, weaponEmplacement4};
         PrintHearts();
+        GetWeapons(0);
     }
     
     private Transform GetLastLive()
@@ -86,8 +88,9 @@ public class Interface : MonoBehaviour
         roundText.GetComponent<Text>().text = rounds.ActualRound + " / " + rounds.MaxRound;
     }
 
-    void GetWeapons()
+    void GetWeapons(int overlayedIndex)
     {
+        overlayedWeaponIndex = overlayedIndex;
         List<string> childs = new List<string>();
         for(int i = 0; i < GameObject.Find("Hand").transform.childCount;i++)
         {
@@ -95,15 +98,38 @@ public class Interface : MonoBehaviour
         }
         PrintWeapons(childs.ToArray());
     }
-
+    /// <summary>
+    /// Update is called every frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void Update()
+    {
+        foreach (GameObject weaponEmplacement in weaponEmplacements)
+        {
+            for (int i = 0; i < weaponEmplacement.transform.childCount; i++)
+            {
+                Transform img = weaponEmplacement.transform.GetChild(i);
+                Destroy(img.gameObject);
+                Destroy(weaponEmplacement.transform.GetChild(i));
+            }
+        }
+    }
+    private void LateUpdate() {
+        GetWeapons(overlayedWeaponIndex);
+    }
     void PrintWeapons(string[] weapons)
     {
+        
+        //Debug.Break();
         for(int i = 0; i< weapons.Length;i++)
         {
             Sprite sprite = GameObject.Find(weapons[i]).GetComponent<SpriteRenderer>().sprite;
-            GameObject weaponArt = Instantiate(new GameObject(),weaponEnplacements[i].transform);
-            Image waponImg = weaponArt.AddComponent<Image>();
-            waponImg.sprite = sprite;
+            GameObject weaponArt = Instantiate(new GameObject(),weaponEmplacements[i].transform);
+            Image weaponImg = weaponArt.AddComponent<Image>();
+            weaponImg.sprite = sprite;
+            if(i == overlayedWeaponIndex)
+            {
+                weaponImg.color = Color.red;
+            }
         }
     }
 
