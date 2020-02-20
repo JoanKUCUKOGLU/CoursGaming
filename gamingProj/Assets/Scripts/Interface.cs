@@ -23,14 +23,14 @@ public class Interface : MonoBehaviour
 
     private GameObject[] weaponEmplacements;
     int overlayedWeaponIndex = 0;
-    private Font Arialfont;
+    private Font SFfont;
     // Start is called before the first frame update
     void Start()
     {
         ParentLives = GameObject.Find("LivesText");
         roundText = GameObject.Find("WeaponMunitionsText");
         player = GameObject.FindObjectOfType<Player>();
-        Arialfont = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        SFfont = Resources.GetBuiltinResource<Font>("SF Automaton.ttf");
         weaponEmplacement1 = GameObject.Find("WeaponEmplacement1");
         weaponEmplacement2 = GameObject.Find("WeaponEmplacement2");
         weaponEmplacement3 = GameObject.Find("WeaponEmplacement3");
@@ -86,6 +86,7 @@ public class Interface : MonoBehaviour
     void UpdadateRounds(Rounds rounds)
     {
         roundText.GetComponent<Text>().text = rounds.ActualRound + " / " + rounds.MaxRound;
+        roundText.GetComponent<Text>().font = SFfont;
     }
 
     void GetWeapons(int overlayedIndex)
