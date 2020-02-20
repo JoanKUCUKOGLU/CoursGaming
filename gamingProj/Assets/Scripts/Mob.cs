@@ -16,6 +16,8 @@ public class Mob : MonoBehaviour
     [SerializeField]
     private NavMeshAgent agent;
 
+    bool isTranslating = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,28 +27,37 @@ public class Mob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //transform.position = Vector3.MoveTowards(transform.position, playerObject.transform.position, mobSpeed);
-
-        //Debug.Log(player.transform.position);
-
-        if (Time.frameCount % 20 == 0)
+        if(Time.frameCount % 20 == 0)
         {
-            if (player != null)
-            {
-                agent.SetDestination(player.transform.position);
-            }
+            agent.speed = !isTranslating ? 10 : 1;
+            agent.SetDestination(player.transform.position);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Equals("Player"))
+        if (collision.gameObject.name.Equals("Player") && !isTranslating)
         {
             if (player != null)
             {
                 player.SendMessage("HealthDown");
-                //GetComponent<Rigidbody>().AddForce(-transform.forward * 1.5F);
+                StartCoroutine(TranslationCoroutine());
             }
         }
+    }
+
+
+    IEnumerator TranslationCoroutine() 
+    {
+        float elapsedTime = 0;
+        isTranslating = true;
+
+        while (elapsedTime < 1)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        isTranslating = false;
     }
 }

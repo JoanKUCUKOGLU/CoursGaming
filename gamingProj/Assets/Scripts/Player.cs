@@ -13,7 +13,11 @@ public class Player : MonoBehaviour
     public int HealthPoint = 3;
     public GameObject ResetButton;
 
-    private Interface iu;
+    private float TimeSinceLastHit = 999;
+
+    [SerializeField]
+    private float InvinsibleDuration;
+
     void Awake()
     {
         m_RigidBody = GetComponent<Rigidbody>();
@@ -28,11 +32,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HealthPoint <= 0)
-        {
-            Destroy(this.gameObject);
-            Instantiate(ResetButton);
-        }
+        TimeSinceLastHit += Time.deltaTime;
     }
     void FixedUpdate()
     {
@@ -53,12 +53,6 @@ public class Player : MonoBehaviour
     void HealthDown()
     {
         HealthPoint -= HealthPoint > 0 ? 1 : 0;
-        iu.SendMessage("HeartLess");
         Debug.Log(HealthPoint);
-    }
-    void HealthUp()
-    {
-        HealthPoint++;
-        iu.SendMessage("getLife");
     }
 }

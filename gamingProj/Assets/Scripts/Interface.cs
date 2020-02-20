@@ -15,6 +15,12 @@ public class Interface : MonoBehaviour
     //public GameObject ParentWeapons;
     public GameObject roundText;
 
+    public GameObject weaponEmplacement1;
+    public GameObject weaponEmplacement2;
+    public GameObject weaponEmplacement3;
+    public GameObject weaponEmplacement4;
+
+    private GameObject[] weaponEnplacements;
     private Font Arialfont;
     // Start is called before the first frame update
     void Start()
@@ -24,6 +30,12 @@ public class Interface : MonoBehaviour
         roundText = GameObject.Find("WeaponMunitionsText");
         player = GameObject.FindObjectOfType<Player>();
         Arialfont = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        weaponEmplacement1 = GameObject.Find("WeaponEmplacement1");
+        weaponEmplacement2 = GameObject.Find("WeaponEmplacement2");
+        weaponEmplacement3 = GameObject.Find("WeaponEmplacement3");
+        weaponEmplacement4 = GameObject.Find("WeaponEmplacement4");
+
+        weaponEnplacements = new GameObject[4]{ weaponEmplacement1, weaponEmplacement2, weaponEmplacement3, weaponEmplacement4};
         PrintHearts();
     }
 
@@ -37,28 +49,6 @@ public class Interface : MonoBehaviour
     {
         return ParentLives.transform.GetChild(ParentLives.transform.childCount - 1);
     }
-
-    //private Transform[] getWeaponListChild()
-    //{
-    //    List<Transform> childs = new List<Transform>();
-    //    foreach (Transform child in ParentWeapons.transform)
-    //    {
-    //        childs.Add(child);
-    //        //Debug.Log(child.transform.name);
-    //    }
-    //    return childs.ToArray();
-    //}
-    //private Transform[] getEnergyListChild()
-    //{
-    //    List<Transform> childs = new List<Transform>();
-    //    foreach (Transform child in ParentEnergy.transform)
-    //    {
-    //        childs.Add(child);
-    //        //Debug.Log(child.transform.name);
-    //    }
-    //    return childs.ToArray();
-    //}
-
 
     private void PrintHearts()
     {
@@ -99,72 +89,26 @@ public class Interface : MonoBehaviour
         roundText.GetComponent<Text>().text = rounds.ActualRound + " / " + rounds.MaxRound;
     }
 
-//    void getWeapon(string weapon)
-//    {
-//        GameObject NewObj = new GameObject();
-//        Image NewImage = NewObj.AddComponent<Image>();
+    void GetWeapons()
+    {
+        List<string> childs = new List<string>();
+        for(int i = 0; i < GameObject.Find("Hand").transform.childCount;i++)
+        {
+            childs.Add(GameObject.Find("Hand").transform.GetChild(i).name);
+        }
+        PrintWeapons(childs.ToArray());
+    }
 
-//        Color color = Color.white;
-//        switch (weapon)
-//        {
-//            case "Gun":
-//                color = Color.blue;
-//                break;
-//            case "Shotgun":
-//                color = Color.black;
-//                break;
-//        }
-//        NewImage.color = color;
-//        NewImage.name = weapon + getWeaponListChild().Length + 1;
-//        if (getWeaponListChild().Length > 0)
-//        {
-//            Transform lastChild = getWeaponListChild()[getWeaponListChild().Length - 1];
-//            NewObj.transform.position = new Vector3(lastChild.position.x + 150, ParentWeapons.transform.position.y, ParentWeapons.transform.position.z);
-//        }
-//        else
-//        {
-//            NewObj.transform.position = new Vector3(ParentWeapons.transform.position.x + 200, ParentWeapons.transform.position.y, ParentWeapons.transform.position.z);
-//        }
-//        NewObj.GetComponent<RectTransform>().SetParent(ParentWeapons.transform);
-//        getWeaponEnergy(weapon);
-//    }
+    void PrintWeapons(string[] weapons)
+    {
+        for(int i = 0; i< weapons.Length;i++)
+        {
+            Sprite sprite = GameObject.Find(weapons[i]).GetComponent<SpriteRenderer>().sprite;
+            GameObject weaponArt = Instantiate(new GameObject(),weaponEnplacements[i].transform);
+            Image waponImg = weaponArt.AddComponent<Image>();
+            waponImg.sprite = sprite;
+        }
+    }
 
-//    void WeaponLess()
-//    {
-//        Transform lastChild = getWeaponListChild()[getWeaponListChild().Length - 1];
-//        Destroy(GameObject.Find(lastChild.name));
-//        //Transform lastEChild = getEnergyListChild()[getEnergyListChild().Length - 1];
-//        //Destroy(GameObject.Find(lastEChild.name));
-//    }
-//    void getWeaponEnergy(string weapon)
-//    {
-//        var cibledWeapon = GameObject.FindObjectOfType<Gun>();
-//        switch (weapon)
-//        {
-//            case "Gun":
-//                cibledWeapon = GameObject.FindObjectOfType<Gun>();
-//                break;
-//            case "Shogun":
-//                cibledWeapon = GameObject.FindObjectOfType<Gun>();
-//                break;
-//        }
-//        Debug.Log(cibledWeapon);
-//        GameObject newGO = new GameObject();
-//        Text myText = newGO.AddComponent<Text>();
-//        myText.name = "WeaponMunitions";
-//        myText.text = cibledWeapon.energy + "/" + cibledWeapon.Maxenergy;
-//        myText.font = Arialfont;
-//        myText.color = Color.green;
-//        myText.fontSize = ParentEnergy.GetComponent<Text>().fontSize + 10;
-//        myText.fontStyle = FontStyle.Bold;
-//        myText.transform.position = new Vector3(ParentEnergy.transform.position.x + 150, ParentEnergy.transform.position.y - 25, ParentEnergy.transform.position.z);
-//        newGO.GetComponent<RectTransform>().SetParent(ParentEnergy.transform);
-//    }
 
-//    void LoseEnergy(string weapon)
-//    {
-//        Transform lastChild = getEnergyListChild()[getEnergyListChild().Length - 1];
-//        Destroy(GameObject.Find(lastChild.name));
-//        getWeaponEnergy(weapon);
-//    }
 }

@@ -470,7 +470,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1e-45, y: 1.39e-43, z: 0, w: 41920}
+  m_BoundingSphereOverride: {x: 4.5743e-41, y: 2.2480778e-35, z: 1e-45, w: 2.248087e-35}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -840,7 +840,7 @@ PrefabInstance:
     - target: {fileID: 2557238287149324799, guid: 6ae197e71bcc245e19207bb6080b6869,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.1210065
+      value: -3.45
       objectReference: {fileID: 0}
     - target: {fileID: 2557238287149324799, guid: 6ae197e71bcc245e19207bb6080b6869,
         type: 3}
@@ -850,7 +850,7 @@ PrefabInstance:
     - target: {fileID: 2557238287149324799, guid: 6ae197e71bcc245e19207bb6080b6869,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.7320528
+      value: -6.122
       objectReference: {fileID: 0}
     - target: {fileID: 2557238287149324799, guid: 6ae197e71bcc245e19207bb6080b6869,
         type: 3}
@@ -1170,6 +1170,7 @@ MonoBehaviour:
   HealthPoint: 5
   ResetButton: {fileID: 4136173020622628328, guid: 45e2a9a9b8c12874bad16a3ba105c7e4,
     type: 3}
+  InvinsibleDuration: 2
 --- !u!65 &1517383304
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1228,6 +1229,50 @@ CapsuleCollider:
   m_Height: 1.55
   m_Direction: 2
   m_Center: {x: 0, y: 0.5, z: -0.1}
+--- !u!1 &1615874440 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2557238286511710914, guid: 6ae197e71bcc245e19207bb6080b6869,
+    type: 3}
+  m_PrefabInstance: {fileID: 1172548705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1615874443
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615874440}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!1 &1796081034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2557238287149324784, guid: 6ae197e71bcc245e19207bb6080b6869,
+    type: 3}
+  m_PrefabInstance: {fileID: 1172548705}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1796081038
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1796081034}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1947865028
 GameObject:
   m_ObjectHideFlags: 0

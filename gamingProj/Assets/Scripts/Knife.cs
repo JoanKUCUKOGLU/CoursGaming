@@ -28,7 +28,7 @@ public class Knife : Weapons
         {
             transform.parent.SendMessage("SetIsFixed", true);
             collider.enabled = true;
-            meshRenderer.enabled = true;
+            weaponVisual.enabled = true;
             transform.position += transform.parent.forward * Mathf.Lerp(0, distance, travelDist);
             if (travelDist >= 0.1)
             {
@@ -47,7 +47,7 @@ public class Knife : Weapons
                 isRetiring = false;
                 transform.parent.SendMessage("SetIsFixed", false);
                 collider.enabled = false;
-                meshRenderer.enabled = false;
+                weaponVisual.enabled = false;
                 transform.position = transform.parent.position;
             }
         }
