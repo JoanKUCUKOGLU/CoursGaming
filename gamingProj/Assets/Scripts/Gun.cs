@@ -19,14 +19,6 @@ public class Gun : Weapons
             firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
             //iu.SendMessage("WeaponLess");
             Destroy(firedBullet, 2); //Temporaire pour tests
-            energy--;
-            iu.SendMessage("LoseEnergy","Gun");
-            Debug.Log("Energy : " + energy);
-            if (energy < 1)
-            {
-                iu.SendMessage("WeaponLess");
-                isLooted = false;
-            }
         }
     }
 }
