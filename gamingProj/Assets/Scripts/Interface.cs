@@ -55,20 +55,21 @@ public class Interface : MonoBehaviour
     }
     private void CreateHeart()
     {
-        GameObject NewObj = Instantiate(new GameObject());
-        Image NewImage = NewObj.AddComponent<Image>();
-        NewImage.color = Color.red;
-        NewObj.GetComponent<RectTransform>().localScale = new Vector3(1,1,0);
+        GameObject newObj = Instantiate(new GameObject());
+        // NewImage.color = Color.red;
+        Image newImage = newObj.AddComponent<Image>();
+        newImage.sprite = Resources.Load<Sprite>("Sprites/heart");
+        newObj.GetComponent<RectTransform>().localScale = new Vector3(1,1,0);
         if (ParentLives.transform.childCount > 0)
         {
             Transform lastChild = GetLastLive();
-            NewObj.transform.position = new Vector3(lastChild.position.x + lifeEspacement, ParentLives.transform.position.y, ParentLives.transform.position.z);
+            newObj.transform.position = new Vector3(lastChild.position.x + lifeEspacement, ParentLives.transform.position.y, ParentLives.transform.position.z);
         }
         else
         {
-            NewObj.transform.position = new Vector3(ParentLives.transform.position.x + espacementWparent, ParentLives.transform.position.y, ParentLives.transform.position.z);
+            newObj.transform.position = new Vector3(ParentLives.transform.position.x + espacementWparent, ParentLives.transform.position.y, ParentLives.transform.position.z);
         }
-        NewObj.GetComponent<RectTransform>().SetParent(ParentLives.transform);
+        newObj.GetComponent<RectTransform>().SetParent(ParentLives.transform);
     }
     void LooseHeart()
     {
@@ -126,9 +127,9 @@ public class Interface : MonoBehaviour
             GameObject weaponArt = Instantiate(new GameObject(),weaponEmplacements[i].transform);
             Image weaponImg = weaponArt.AddComponent<Image>();
             weaponImg.sprite = sprite;
-            if(i == overlayedWeaponIndex)
+            if(i != overlayedWeaponIndex)
             {
-                weaponImg.color = Color.red;
+                weaponImg.color = Color.gray;
             }
         }
     }
@@ -136,5 +137,13 @@ public class Interface : MonoBehaviour
     void RestartButton()
     {
         Instantiate(restartButtonGO);
+    }
+
+    void SetOverlayedWeapon(int index)
+    {
+        if(weaponEmplacements[index].transform.childCount > 0) 
+        {
+            overlayedWeaponIndex = index;
+        }
     }
 }

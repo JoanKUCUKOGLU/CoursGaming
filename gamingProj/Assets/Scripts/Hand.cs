@@ -72,6 +72,7 @@ public class Hand : MonoBehaviour
     void ChangeWeapon(string weaponName)
     {
         gun = GameObject.Find(weaponName);
+        gun.SendMessage("CalculateRounds");
         iu.SendMessage("GetWeapons",FindIndexWeapon(weaponName));
     }
     int FindIndexWeapon(string weaponName)
