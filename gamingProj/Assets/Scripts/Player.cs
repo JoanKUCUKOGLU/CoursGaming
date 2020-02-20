@@ -1,4 +1,4 @@
-﻿    using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +9,9 @@ public class Player : MonoBehaviour
 
     private Rigidbody m_RigidBody;
 
-    private int HealthPoint = 3;
+    [SerializeField]
+    public int HealthPoint = 3;
+    public GameObject ResetButton;
 
     private float TimeSinceLastHit = 999;
 
@@ -24,7 +26,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        iu = GameObject.FindObjectOfType<Interface>();
     }
 
     // Update is called once per frame
@@ -36,24 +38,21 @@ public class Player : MonoBehaviour
     {
         float vInput = Input.GetAxis("Vertical");
         float hInput = Input.GetAxis("Horizontal");
-        Vector3 dir = Vector3.ClampMagnitude(new Vector3(hInput, 0, vInput),1);
-        m_RigidBody.MovePosition(transform.position + dir * m_TranslationSpeed * Time.fixedDeltaTime);
-        m_RigidBody.velocity = Vector3.zero;
+        Vector3 dir = Vector3.ClampMagnitude(new Vector3(hInput, 0, vInput), 1);
+
+        //Vector3 vectForward = transform.forward * m_TranslationSpeed * Time.fixedDeltaTime * vInput;
+        //Vector3 vectSide = transform.right * m_TranslationSpeed * Time.fixedDeltaTime * hInput;
+        if (HealthPoint > 0)
+        {
+            m_RigidBody.MovePosition(transform.position + dir * m_TranslationSpeed * Time.fixedDeltaTime);
+            m_RigidBody.velocity = Vector3.zero;
+        }
+
     }
 
     void HealthDown()
     {
-        if(TimeSinceLastHit >= InvinsibleDuration)
-        {
-            HealthPoint -= HealthPoint > 0 ? 1 : 0;
-            TimeSinceLastHit = 0;
-            Debug.Log(HealthPoint);
-        } else
-        {
-            Debug.Log("Lol no");
-        }
-        TimeSinceLastHit += Time.deltaTime;
-        Debug.Log(TimeSinceLastHit);
-
+        HealthPoint -= HealthPoint > 0 ? 1 : 0;
+        Debug.Log(HealthPoint);
     }
 }

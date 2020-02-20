@@ -1,66 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class Gun : MonoBehaviour
+public class Gun : Weapons
 {
     [SerializeField]
-    GameObject bullet;
+    protected GameObject bullet;
     [SerializeField]
-    float bulletSpeed;
-    [SerializeField]
-    float cooldown;
-    
-    GameObject firedBullet;
-    MeshRenderer meshRenderer;
-    BoxCollider boxCollider;
-    GameObject hand;
-    bool isLooted = false;
-    
+    protected float bulletSpeed;
+    protected GameObject firedBullet;
 
-    void Awake()
-    {
-        //Récupération des éléments visuels et physique du gun pour désactiver au loot
-        meshRenderer = GetComponent<MeshRenderer>();
-        boxCollider = GetComponent<BoxCollider>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    // Appel quand entrée en collision
-    void OnCollisionEnter(Collision collider)
-    {
-        Debug.Log(collider.gameObject.name);
-        //Met l'arme en arme active et la fait disparaitre du sol
-        if (collider.transform.name == "Player")
-        {
-            hand = GameObject.Find("Hand");
-            isLooted = true;
-            transform.parent = hand.transform;
-            meshRenderer.enabled = false;
-            boxCollider.enabled = false;
-            hand.SendMessage("SetGun",this.gameObject); //this optionnel, mis pour la clareté de code
-            hand.SendMessage("SetCooldown", cooldown);
-        }
-    }
-
-    void Shoot()
+    override protected void Shoot(Vector3 shootPos)
     {
         if (isLooted)
         {
-            firedBullet = Instantiate(bullet, hand.transform.position,hand.transform.rotation);
+            firedBullet = Instantiate(bullet, shootPos,hand.transform.rotation);
             firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
+            //iu.SendMessage("WeaponLess");
             Destroy(firedBullet, 2); //Temporaire pour tests
+            energy--;
+            iu.SendMessage("LoseEnergy","Gun");
+            Debug.Log("Energy : " + energy);
+            if (energy < 1)
+            {
+                iu.SendMessage("WeaponLess");
+                isLooted = false;
+            }
         }
     }
 }

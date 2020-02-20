@@ -25,13 +25,27 @@ public class Mob : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //transform.position = Vector3.MoveTowards(transform.position, playerObject.transform.position, mobSpeed);
+
+        //Debug.Log(player.transform.position);
+
         if(Time.frameCount % 20 == 0)
         {
-            agent.speed = !isTranslating ? 5F : 0.5F;
             agent.SetDestination(player.transform.position);
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name.Equals("Player"))
+        {
+            if (player != null)
+            {
+                player.SendMessage("HealthDown");
+                //GetComponent<Rigidbody>().AddForce(-transform.forward * 1.5F);
+            }
+        }
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name.Equals("Player") && !isTranslating)
