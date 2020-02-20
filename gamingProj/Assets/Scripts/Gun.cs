@@ -18,6 +18,8 @@ public class Gun : MonoBehaviour
     bool isLooted = false;
 
     private Interface iu;
+    public int Maxenergy = 5;
+    public int energy;
 
     void Awake()
     {
@@ -30,11 +32,13 @@ public class Gun : MonoBehaviour
     void Start()
     {
         iu = GameObject.FindObjectOfType<Interface>();
+        energy = Maxenergy;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         
     }
 
@@ -62,8 +66,15 @@ public class Gun : MonoBehaviour
         {
             firedBullet = Instantiate(bullet, hand.transform.position,hand.transform.rotation);
             firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
-            iu.SendMessage("WeaponLess");
             Destroy(firedBullet, 2); //Temporaire pour tests
+            energy--;
+            iu.SendMessage("LoseEnergy","Gun");
+            Debug.Log("Energy : " + energy);
+            if (energy < 1)
+            {
+                iu.SendMessage("WeaponLess");
+                isLooted = false;
+            }
         }
     }
 }

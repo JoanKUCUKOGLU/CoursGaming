@@ -16,6 +16,8 @@ public class Shotgun : MonoBehaviour
     BoxCollider boxCollider;
     GameObject hand;
     bool isLooted = false;
+    public int Maxenergy = 5;
+    public int energy;
 
     private Interface iu;
     void Awake()
@@ -28,12 +30,18 @@ public class Shotgun : MonoBehaviour
     void Start()
     {
         iu = GameObject.FindObjectOfType<Interface>();
+        energy = Maxenergy;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (energy <= 1)
+        {
+            energy = 0;
+            isLooted = false;
+            iu.SendMessage("LoseEnergy");
+        }
     }
 
     // Appel quand entrée en collision
@@ -44,6 +52,7 @@ public class Shotgun : MonoBehaviour
         if (collider.transform.name == "Player")
         {
             iu.SendMessage("getWeapon", "Shotgun");
+            iu.SendMessage("getWeaponEnergy", "Shotgun");
             hand = GameObject.Find("Hand");
             isLooted = true;
             transform.parent = hand.transform;
@@ -62,8 +71,10 @@ public class Shotgun : MonoBehaviour
             {
                 firedBullet = Instantiate(bullet, hand.transform.position, hand.transform.rotation);
                 firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
-                iu.SendMessage("WeaponLess");
                 Destroy(firedBullet, 2); //Temporaire pour tests
+                energy--;
+                iu.SendMessage("LoseEnergy");
+                Debug.Log("Energy : " + energy);
             }
         }
     }
