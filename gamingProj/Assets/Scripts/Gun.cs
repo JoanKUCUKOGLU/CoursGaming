@@ -17,7 +17,7 @@ public class Gun : Weapons
         {
             firedBullet = Instantiate(bullet, shootPos,hand.transform.rotation);
             firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
-            iu.SendMessage("WeaponLess");
+            //iu.SendMessage("WeaponLess");
             Destroy(firedBullet, 2); //Temporaire pour tests
         }
     }
