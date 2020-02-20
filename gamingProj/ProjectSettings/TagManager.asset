@@ -45,3 +45,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 3312298833
+    locked: 0
+  - name: Decoration
+    uniqueID: 4049513865
+    locked: 0
+  - name: Player
+    uniqueID: 125050819
+    locked: 0
+  - name: Wall
+    uniqueID: 1294119123
+    locked: 0
