@@ -16,6 +16,6 @@ public class LoadGame : MonoBehaviour
     }
     public void Exit()
     {
-        SceneManager.LoadScene("TestPhysics");
+        SceneManager.LoadScene("Game");
     }
 }
