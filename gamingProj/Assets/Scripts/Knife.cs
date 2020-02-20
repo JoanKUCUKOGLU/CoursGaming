@@ -52,4 +52,9 @@ public class Knife : Weapons
             }
         }
     }
+
+    protected override void LooseMunitions()
+    {
+        
+    }
 }

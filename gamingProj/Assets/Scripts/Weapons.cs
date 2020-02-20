@@ -64,7 +64,7 @@ abstract public class Weapons : MonoBehaviour
 
     abstract protected void Shoot(Vector3 shootPos);
 
-    protected void LooseMunitions()
+    virtual protected void LooseMunitions()
     {
         round--;
         CalculateRounds();
