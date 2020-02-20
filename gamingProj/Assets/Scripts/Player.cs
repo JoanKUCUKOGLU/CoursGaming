@@ -5,10 +5,15 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField]
-    float m_TranslationSpeed;
+    private float m_TranslationSpeed;
 
-    Rigidbody m_RigidBody;
+    private Rigidbody m_RigidBody;
 
+    [SerializeField]
+    public int HealthPoint = 3;
+    public GameObject ResetButton;
+
+    private Interface iu;
     void Awake()
     {
         m_RigidBody = GetComponent<Rigidbody>();
@@ -17,23 +22,43 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        iu = GameObject.FindObjectOfType<Interface>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(HealthPoint <= 0)
+        {
+            Destroy(this.gameObject);
+            Instantiate(ResetButton);
+        }
     }
     void FixedUpdate()
     {
         float vInput = Input.GetAxis("Vertical");
         float hInput = Input.GetAxis("Horizontal");
-        Vector3 dir = Vector3.ClampMagnitude(new Vector3(hInput, 0, vInput),1);
-        
+        Vector3 dir = Vector3.ClampMagnitude(new Vector3(hInput, 0, vInput), 1);
+
         //Vector3 vectForward = transform.forward * m_TranslationSpeed * Time.fixedDeltaTime * vInput;
         //Vector3 vectSide = transform.right * m_TranslationSpeed * Time.fixedDeltaTime * hInput;
-        m_RigidBody.MovePosition(transform.position + dir * m_TranslationSpeed * Time.fixedDeltaTime);
-        m_RigidBody.velocity = Vector3.zero;
+        if (HealthPoint > 0)
+        {
+            m_RigidBody.MovePosition(transform.position + dir * m_TranslationSpeed * Time.fixedDeltaTime);
+            m_RigidBody.velocity = Vector3.zero;
+        }
+
+    }
+
+    void HealthDown()
+    {
+        HealthPoint -= HealthPoint > 0 ? 1 : 0;
+        iu.SendMessage("HeartLess");
+        Debug.Log(HealthPoint);
+    }
+    void HealthUp()
+    {
+        HealthPoint++;
+        iu.SendMessage("getLife");
     }
 }
