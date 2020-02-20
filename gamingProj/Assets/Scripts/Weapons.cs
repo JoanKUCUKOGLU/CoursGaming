@@ -12,7 +12,7 @@ abstract public class Weapons : MonoBehaviour
     protected int maxRound;
 
     protected int round;
-    protected MeshRenderer meshRenderer;
+    protected SpriteRenderer weaponVisual;
     protected Collider collider;
     protected GameObject hand;
     protected bool isLooted = false;
@@ -21,7 +21,7 @@ abstract public class Weapons : MonoBehaviour
     void Awake()
     {
         //Récupération des éléments visuels et physique du gun pour désactiver au loot
-        meshRenderer = GetComponent<MeshRenderer>();
+        weaponVisual = GetComponent<SpriteRenderer>();
         collider = GetComponent<Collider>();
         iu = GameObject.FindObjectOfType<Interface>();
     }
@@ -40,10 +40,12 @@ abstract public class Weapons : MonoBehaviour
             isLooted = true;
             transform.parent = hand.transform;
             transform.rotation = hand.transform.rotation;
-            meshRenderer.enabled = false;
+            weaponVisual.enabled = false;
             collider.enabled = false;
             hand.SendMessage("SetGun", this.gameObject); //this optionnel, mis pour la clareté de code
             hand.SendMessage("SetCooldown", cooldown);
+            iu.SendMessage("GetWeapons");
+            
         }
     }
 
