@@ -9,7 +9,8 @@ public class Interface : MonoBehaviour
     private int lifeEspacement = 0;
     [SerializeField]
     private int espacementWparent = 0;
-
+    [SerializeField]
+    private GameObject restartButtonGO;
     private Player player;
     public GameObject ParentLives;
     //public GameObject ParentWeapons;
@@ -26,7 +27,6 @@ public class Interface : MonoBehaviour
     void Start()
     {
         ParentLives = GameObject.Find("LivesText");
-        //ParentWeapons = GameObject.Find("WeaponsText");
         roundText = GameObject.Find("WeaponMunitionsText");
         player = GameObject.FindObjectOfType<Player>();
         Arialfont = Resources.GetBuiltinResource<Font>("Arial.ttf");
@@ -38,13 +38,7 @@ public class Interface : MonoBehaviour
         weaponEnplacements = new GameObject[4]{ weaponEmplacement1, weaponEmplacement2, weaponEmplacement3, weaponEmplacement4};
         PrintHearts();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     private Transform GetLastLive()
     {
         return ParentLives.transform.GetChild(ParentLives.transform.childCount - 1);
@@ -52,14 +46,14 @@ public class Interface : MonoBehaviour
 
     private void PrintHearts()
     {
-        for (var i = 1; i <= player.HealthPoint; i++)
+        for (var i = 1; i <= player.healthPoint; i++)
         {
             CreateHeart();
         }
     }
     private void CreateHeart()
     {
-        GameObject NewObj = new GameObject();
+        GameObject NewObj = Instantiate(new GameObject());
         Image NewImage = NewObj.AddComponent<Image>();
         NewImage.color = Color.red;
         NewObj.GetComponent<RectTransform>().localScale = new Vector3(1,1,0);
@@ -79,9 +73,12 @@ public class Interface : MonoBehaviour
         Transform lastChild = GetLastLive();
         Destroy(lastChild.gameObject);
     }
-    void GetLife()
+    void AddLife(int lifeToUp)
     {
-        CreateHeart();
+        for (int i = 0; i < lifeToUp; i++)
+        { 
+            CreateHeart();
+        }
     }
 
     void UpdadateRounds(Rounds rounds)
@@ -110,5 +107,8 @@ public class Interface : MonoBehaviour
         }
     }
 
-
+    void RestartButton()
+    {
+        Instantiate(restartButtonGO);
+    }
 }
