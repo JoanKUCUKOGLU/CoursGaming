@@ -158,7 +158,7 @@ public class Interface : MonoBehaviour
         GameObject newGO = new GameObject();
         Text myText = newGO.AddComponent<Text>();
         myText.name = "WeaponMunitions";
-        myText.text = cibledWeapon.energy + "/" + cibledWeapon.Maxenergy;
+        //myText.text = cibledWeapon.energy + "/" + cibledWeapon.Maxenergy;
         myText.font = Arialfont;
         myText.color = Color.green;
         myText.fontSize = ParentEnergy.GetComponent<Text>().fontSize + 10;
