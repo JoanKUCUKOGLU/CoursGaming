@@ -12,6 +12,7 @@ abstract public class Weapons : MonoBehaviour
     protected int maxRound;
 
     protected int round;
+    [SerializeField]
     protected SpriteRenderer weaponVisual;
     protected Collider collider;
     protected GameObject hand;

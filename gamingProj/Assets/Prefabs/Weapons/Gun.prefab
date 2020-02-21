@@ -60,6 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 2
   maxRound: 15
+  weaponVisual: {fileID: 4590867084340279394}
   bullet: {fileID: 3207802189060487992, guid: 61f433f01a260b84d93868425db20a0f, type: 3}
   bulletSpeed: 500
 --- !u!212 &4590867084340279394
