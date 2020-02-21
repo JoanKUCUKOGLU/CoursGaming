@@ -33,6 +33,7 @@ public class Mob : MonoBehaviour
     void Update()
     {
         transform.rotation = startRot;
+        transform.position = new Vector3(transform.position.x,0,transform.position.z);
         if(lifePoint <= 0)
         {
             Destroy(gameObject);
@@ -44,7 +45,7 @@ public class Mob : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.name.Equals("Player") && !isTranslating)
         {
