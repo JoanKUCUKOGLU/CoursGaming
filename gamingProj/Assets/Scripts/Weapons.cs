@@ -75,7 +75,7 @@ abstract public class Weapons : MonoBehaviour
         {
             Destroy(this.gameObject);
             hand.SendMessage("ChangeWeapon","Knife");
-            //iu.SendMessage("GetWeapons");
+            iu.SendMessage("GetWeapons");
         }
     }
     protected void CalculateRounds()

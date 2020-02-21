@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
         {
             if(hand.transform.childCount >= 1)
             {
+                Debug.Break();
                 ui.SendMessage("SetOverlayedWeapon",value:0) ;
                 hand.SendMessage("ChangeWeapon", hand.transform.GetChild(0).name);
             }
@@ -45,6 +46,7 @@ public class Player : MonoBehaviour
         {
             if (hand.transform.childCount >= 2)
             {
+                Debug.Break();
                 ui.SendMessage("SetOverlayedWeapon", value: 1);
                 hand.SendMessage("ChangeWeapon", hand.transform.GetChild(1).name);
             }
@@ -54,6 +56,7 @@ public class Player : MonoBehaviour
         {
             if (hand.transform.childCount >= 3)
             {
+                Debug.Break();
                 ui.SendMessage("SetOverlayedWeapon", 2);
                 hand.SendMessage("ChangeWeapon", hand.transform.GetChild(2).name);
             }
@@ -63,6 +66,7 @@ public class Player : MonoBehaviour
         {
             if (hand.transform.childCount >= 4)
             {
+                Debug.Break();
                 ui.SendMessage("SetOverlayedWeapon", 3);
                 hand.SendMessage("ChangeWeapon", hand.transform.GetChild(3).name);
             }
