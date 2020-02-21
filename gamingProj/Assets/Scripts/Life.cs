@@ -17,6 +17,7 @@ public class Life : MonoBehaviour
         if (collider.transform.name == "Player")
         {
             player.SendMessage("HealthUp");
+            Destroy(gameObject);
         }
     }
 }
