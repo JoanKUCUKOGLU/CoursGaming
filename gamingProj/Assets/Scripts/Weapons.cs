@@ -30,10 +30,10 @@ abstract public class Weapons : MonoBehaviour
         iu = GameObject.Find("Interface");
     }
     // Appel quand entrée en collision
-    void OnCollisionEnter(Collision collision)
+    void OnTriggerEnter(Collider collision)
     {
 
-        Debug.Log(collider.gameObject.name);
+        Debug.Log(collision.gameObject.name);
         //Met l'arme en arme active et la fait disparaitre du sol
         if (collision.transform.name == "Player")
         {
