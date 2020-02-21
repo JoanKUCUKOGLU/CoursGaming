@@ -57,3 +57,6 @@ TagManager:
   - name: Wall
     uniqueID: 1294119123
     locked: 0
+  - name: Sky
+    uniqueID: 4275415771
+    locked: 0

@@ -171,9 +171,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6412c4a25d08034189b13191c2801b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TranslationSpeed: 10
-  HealthPoint: 3
-  ResetButton: {fileID: 0}
+  translationSpeed: 5
+  healthPoint: 3
+  resetButton: {fileID: 0}
+  InvinsibleDuration: 0
 --- !u!54 &2557238287149324796
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -200,7 +201,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.41
+  m_Radius: 0.5
   m_Height: 1.5
   m_Direction: 2
-  m_Center: {x: 0, y: 0, z: -0.3}
+  m_Center: {x: 0, y: 0, z: 0.2}
