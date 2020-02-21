@@ -149,10 +149,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 641bec7589466a74ea85fb94b4841c5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ViewportStartPos: {x: -0.1, y: 0.5}
-  m_ViewportEndPos: {x: 1.1, y: 0.7}
+  m_ViewportStartPos: {x: -0.5, y: 0.5}
+  m_ViewportEndPos: {x: 1.5, y: 0.5}
   m_TranslationSpeed: 2
-  m_SineAmplitude: 1
+  m_SineAmplitude: 0.5
   m_SinePulsation: 2
   m_OrientateTowardsEnd: 0
 --- !u!4 &396313696
