@@ -10,11 +10,9 @@ public class Gun : Weapons
     [SerializeField]
     protected float bulletSpeed;
     protected GameObject firedBullet;
-    AudioSource audio;
 
     private void Awake()
     {
-        audio = GetComponent<AudioSource>();
     }
     override protected void Shoot(Vector3 shootPos)
     {
@@ -22,7 +20,6 @@ public class Gun : Weapons
         {
             firedBullet = Instantiate(bullet, shootPos, hand.transform.rotation);
             firedBullet.GetComponent<Rigidbody>().AddForce(firedBullet.transform.forward * bulletSpeed);
-            audio.Play();
         }
     }
 }

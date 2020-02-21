@@ -12,19 +12,12 @@ public class Knife : Weapons
     bool isFiring = false;
     bool isRetiring = false;
     int i = 0;
-    AudioSource audio;
-
-    private void Awake()
-    {
-        audio = GetComponent<AudioSource>();
-    }
 
     protected override void Shoot(Vector3 shootPos)
     {
         if (!isFiring && !isRetiring)
         {
             isFiring = true;
-            audio.Play();
         }
     }
 
