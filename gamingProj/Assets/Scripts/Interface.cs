@@ -44,7 +44,11 @@ public class Interface : MonoBehaviour
     
     private Transform GetLastLive()
     {
+        if(ParentLives.transform.childCount > 0)
+        {
         return ParentLives.transform.GetChild(ParentLives.transform.childCount - 1);
+        }
+        return null;
     }
 
     private void PrintHearts()
@@ -131,7 +135,7 @@ public class Interface : MonoBehaviour
             weaponImg.sprite = sprite;
             if(i != overlayedWeaponIndex)
             {
-                weaponImg.color = Color.gray;
+                weaponImg.color = new Color(100,100,100);
             }
         }
     }

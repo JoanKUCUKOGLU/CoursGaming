@@ -149,10 +149,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 952ee77d99c1b4d3d8de163b806dc5c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mobSpeed: 0
+  mobSpeed: 2
   maxLifePoint: 3
   cam: {fileID: 0}
   agent: {fileID: 5316618849155669183}
+  possibleLoots:
+  - {fileID: 128764491564542663, guid: f0df664c3ff249849adf64ea15047146, type: 3}
+  - {fileID: 4293213947506320320, guid: d5322a39548b3374f8629d0db487e9f8, type: 3}
+  - {fileID: 4222875060386918276, guid: 646a9fb97e06fce4c936a6523cbf427b, type: 3}
 --- !u!136 &4523178264450085065
 CapsuleCollider:
   m_ObjectHideFlags: 0
