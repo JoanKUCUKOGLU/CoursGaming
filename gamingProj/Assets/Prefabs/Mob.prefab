@@ -150,8 +150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobSpeed: 0
+  maxLifePoint: 3
   cam: {fileID: 0}
-  agent: {fileID: 0}
+  agent: {fileID: 5316618849155669183}
 --- !u!136 &4523178264450085065
 CapsuleCollider:
   m_ObjectHideFlags: 0

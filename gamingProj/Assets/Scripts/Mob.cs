@@ -41,6 +41,7 @@ public class Mob : MonoBehaviour
     void Update()
     {
         transform.rotation = startRot;
+        transform.position = new Vector3(transform.position.x,0,transform.position.z);
         if(lifePoint <= 0)
         {
             System.Random rnd = new System.Random();
@@ -53,14 +54,14 @@ public class Mob : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        if (Time.frameCount % 20 == 0)
+        if(Time.frameCount % 20 == 0)
         {
             agent.speed = !isTranslating ? 10 : 1;
             agent.SetDestination(player.transform.position);
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.name.Equals("Player") && !isTranslating)
         {
