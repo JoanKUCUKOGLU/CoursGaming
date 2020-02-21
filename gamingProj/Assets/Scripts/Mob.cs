@@ -7,7 +7,10 @@ public class Mob : MonoBehaviour
 {
     [SerializeField]
     private float mobSpeed;
+    [SerializeField]
+    int maxLifePoint;
 
+    int lifePoint;
     private Player player;
 
     [SerializeField]
@@ -17,16 +20,23 @@ public class Mob : MonoBehaviour
     private NavMeshAgent agent;
 
     bool isTranslating = false;
-
+    Quaternion startRot;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindObjectOfType<Player>();
+        startRot = transform.rotation;
+        lifePoint = maxLifePoint;
     }
 
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = startRot;
+        if(lifePoint <= 0)
+        {
+            Destroy(gameObject);
+        }
         if(Time.frameCount % 20 == 0)
         {
             agent.speed = !isTranslating ? 10 : 1;
@@ -59,5 +69,10 @@ public class Mob : MonoBehaviour
         }
 
         isTranslating = false;
+    }
+
+    void Hitted(int damage)
+    {
+        lifePoint -= damage;
     }
 }

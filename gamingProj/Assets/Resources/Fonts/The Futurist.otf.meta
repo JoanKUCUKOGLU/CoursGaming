@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 20520754416fc124189ad4180d59b8c6
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: The Futurist
+  fontNames:
+  - The Futurist
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f4496f624e947414ca1cdf47ceb66492, type: 3}
+  - {fileID: 12800000, guid: 6f30ed2b32ed1cf45be661128ac91acd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

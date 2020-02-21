@@ -53,6 +53,11 @@ public class Knife : Weapons
         }
     }
 
+    void OnTriggerEnter(Collider collision)
+    {
+        collision.gameObject.SendMessage("Hitted", 1);
+    }
+
     protected override void LooseMunitions()
     {
         
