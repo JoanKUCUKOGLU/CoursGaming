@@ -6,15 +6,10 @@ using UnityEngine.AI;
 public class Mob : MonoBehaviour
 {
     [SerializeField]
-    private float mobSpeed;
-    [SerializeField]
     int maxLifePoint;
 
     int lifePoint;
     private Player player;
-
-    [SerializeField]
-    private Camera cam;
 
     [SerializeField]
     private NavMeshAgent agent;
@@ -46,7 +41,7 @@ public class Mob : MonoBehaviour
         {
             System.Random rnd = new System.Random();
             randomLooted = rnd.Next(1, 3);
-            Debug.Log(randomLooted);
+            //Debug.Log(randomLooted);
             if(randomLooted == 2)
             {
                 randomLoot = rnd.Next(0, 2);
@@ -55,9 +50,9 @@ public class Mob : MonoBehaviour
             }
             Destroy(gameObject);
         }
-        if(Time.frameCount % 20 == 0)
+        if(Time.frameCount % 1 == 0)
         {
-            agent.speed = !isTranslating ? 10 : 1;
+            agent.speed = !isTranslating ? 5 : 1;
             agent.SetDestination(player.transform.position);
         }
     }

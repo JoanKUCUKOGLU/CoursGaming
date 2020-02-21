@@ -8,6 +8,9 @@ TagManager:
   - Obstacle
   - Level
   - Ground
+  - EnterInRoomTrigger
+  - DoorBlocker
+  - Spawner
   layers:
   - Default
   - TransparentFX
