@@ -45,7 +45,8 @@ public class Mob : MonoBehaviour
         if(lifePoint <= 0)
         {
             System.Random rnd = new System.Random();
-            randomLooted = rnd.Next(1, 2);
+            randomLooted = rnd.Next(1, 3);
+            Debug.Log(randomLooted);
             if(randomLooted == 2)
             {
                 randomLoot = rnd.Next(0, 2);
