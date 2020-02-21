@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     int damage = 1;
     void OnCollisionEnter(Collision collision)
     {
-        collision.gameObject.SendMessage("Hitted",damage);
+        collision.gameObject.SendMessage("Hitted",damage,SendMessageOptions.DontRequireReceiver);
         Destroy(this.gameObject);
     }
 
