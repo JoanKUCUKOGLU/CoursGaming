@@ -90,4 +90,10 @@ public class Player : MonoBehaviour
             GameObject.Find("Interface").SendMessage("RestartButton");
         }
     }
+
+    void HealthUp()
+    {
+        healthPoint++;
+        GameObject.Find("Interface").SendMessage("AddLife",1);
+    }
 }
