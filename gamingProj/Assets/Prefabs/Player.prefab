@@ -222,10 +222,28 @@ PrefabInstance:
       propertyPath: m_SpriteSortPoint
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 983658090, guid: e13fefacbb25c4352a0a63d9327fcc3f, type: 3}
+      propertyPath: distance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 983658090, guid: e13fefacbb25c4352a0a63d9327fcc3f, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3576722965617912278, guid: e13fefacbb25c4352a0a63d9327fcc3f,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576722965617912278, guid: e13fefacbb25c4352a0a63d9327fcc3f,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3576722965617912278, guid: e13fefacbb25c4352a0a63d9327fcc3f,
+        type: 3}
+      propertyPath: m_Height
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 6042773348282682704, guid: e13fefacbb25c4352a0a63d9327fcc3f,
         type: 3}

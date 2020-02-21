@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mobSpeed: 2
-  maxLifePoint: 3
+  maxLifePoint: 1
   cam: {fileID: 0}
   agent: {fileID: 5316618849155669183}
   possibleLoots:
