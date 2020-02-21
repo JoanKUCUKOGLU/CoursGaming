@@ -110,5 +110,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   maxRound: 0
+  weaponVisual: {fileID: -3224424675858016042}
   distance: 4
   speed: 0.7

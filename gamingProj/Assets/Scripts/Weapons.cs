@@ -12,6 +12,7 @@ abstract public class Weapons : MonoBehaviour
     protected int maxRound;
 
     protected int round;
+    [SerializeField]
     protected SpriteRenderer weaponVisual;
     protected Collider collider;
     protected GameObject hand;
@@ -30,7 +31,7 @@ abstract public class Weapons : MonoBehaviour
         iu = GameObject.Find("Interface");
     }
     // Appel quand entrée en collision
-    void OnTriggerEnter(Collider collision)
+    void OnCollisionEnter(Collision collision)
     {
 
         Debug.Log(collision.gameObject.name);
