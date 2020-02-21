@@ -30,7 +30,8 @@ public class Interface : MonoBehaviour
         ParentLives = GameObject.Find("LivesText");
         roundText = GameObject.Find("WeaponMunitionsText");
         player = GameObject.FindObjectOfType<Player>();
-        SFfont = Resources.GetBuiltinResource<Font>("SF Automaton.ttf");
+        //SFfont = Resources.GetBuiltinResource<Font>("SF Automaton.ttf");
+        SFfont = Resources.Load<Font>("Fonts/SF Automaton.ttf");
         weaponEmplacement1 = GameObject.Find("WeaponEmplacement1");
         weaponEmplacement2 = GameObject.Find("WeaponEmplacement2");
         weaponEmplacement3 = GameObject.Find("WeaponEmplacement3");
@@ -87,7 +88,7 @@ public class Interface : MonoBehaviour
     void UpdadateRounds(Rounds rounds)
     {
         roundText.GetComponent<Text>().text = rounds.ActualRound + " / " + rounds.MaxRound;
-        roundText.GetComponent<Text>().font = SFfont;
+        //roundText.GetComponent<Text>().font = SFfont;
     }
 
     void GetWeapons(int overlayedIndex)
